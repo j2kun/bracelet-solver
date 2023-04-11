@@ -374,5 +374,14 @@ if __name__ == "__main__":
             print(
                 f"{start}{'_'.join(knot_names[model.eval(n[1].knot)] for n in row)}{end}"
             )
+
+        # TODO: print as an input to braceletbook
+        # colors order: abbaabba
+        # knots: (f = forward forward, b = backward backward, fb = forward backward, bf = backward forward)
+        # f,f,fb,f
+        # f,f,f
+        # f,bf,f,f
+        # f,f,f
+
     else:
         print("The problem is unsatisfiable")
