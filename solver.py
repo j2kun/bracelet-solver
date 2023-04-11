@@ -325,8 +325,8 @@ def setup_serpinski_constraints(grid: Grid):
 
 
 if __name__ == "__main__":
-    num_strings = 24
-    num_rows = 10
+    num_strings = 32
+    num_rows = 17
     grid = setup_grid(num_strings=num_strings, num_rows=num_rows)
 
     print("\ngeneral constraints")
