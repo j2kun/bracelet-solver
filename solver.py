@@ -293,6 +293,17 @@ def setup_constraints(grid: Grid):
             )
         )
 
+    # For the last row of knot nodes, fix the exit colors on each side to match
+    # the corresponding initial string color.
+    max_knot_row = max(grid.knot_nodes.keys(), key=lambda x: x[0])[0]
+    for j in range(grid.width):
+        if grid.knot_at(max_knot_row, j):
+            knot_node = grid.knot_nodes[(max_knot_row, j)]
+            upper_left_initial = grid.string_nodes[(0, j - 1)]
+            upper_right_initial = grid.string_nodes[(0, j + 1)]
+            constraints.append(knot_node.exit_left == upper_left_initial.color)
+            constraints.append(knot_node.exit_right == upper_right_initial.color)
+
     return constraints
 
 
@@ -302,6 +313,28 @@ def setup_serpinski_constraints(grid: Grid):
     # In this dict, 1 is black and 0 is white.
     # The keys are the node ids.
     serpinski = dict()
+
+    # make the pattern symmetric, which is not necessarily true of all
+    # patterns, and only has an impact on the part of the pattern outside
+    # the core serpinski triangle. Still, it makes it look less ugly in
+    # braceletbook's preview.
+    for node_id, knot_node in grid.knot_nodes.items():
+        row, col = node_id
+        mirror_col = grid.width - 1 - col
+        if col < grid.width // 2:
+            if not grid.knot_at(row, mirror_col):
+                raise ValueError("Bad indexing")
+            mirror_knot = grid.knot_nodes[(row, mirror_col)]
+            constraints.append(knot_node.color == mirror_knot.color)
+
+    for node_id, string_node in grid.string_nodes.items():
+        row, col = node_id
+        mirror_col = grid.width - 1 - col
+        if col < grid.width // 2:
+            if not (row, mirror_col) in grid.string_nodes:
+                raise ValueError("Bad indexing")
+            mirror_string = grid.string_nodes[(row, mirror_col)]
+            constraints.append(string_node.color == mirror_string.color)
 
     for node_id, knot_node in grid.knot_nodes.items():
         # check to see if the knot is within the triangle
@@ -326,18 +359,18 @@ def setup_serpinski_constraints(grid: Grid):
 
 if __name__ == "__main__":
     num_strings = 32
-    num_rows = 17
+    num_rows = 18
     grid = setup_grid(num_strings=num_strings, num_rows=num_rows)
 
-    print("\ngeneral constraints")
     constraints = setup_constraints(grid)
-    for constraint in constraints:
-        print(constraint)
+    print(f"general constraints: {len(constraints)}")
+    # for constraint in constraints:
+    #     print(constraint)
 
-    print("\nserpinski constraints")
     serpinski_constraints = setup_serpinski_constraints(grid)
-    for constraint in serpinski_constraints:
-        print(constraint)
+    print(f"serpinski constraints: {len(serpinski_constraints)}")
+    # for constraint in serpinski_constraints:
+    #     print(constraint)
 
     solver = z3.Solver()
     solver.add(constraints)
@@ -374,14 +407,24 @@ if __name__ == "__main__":
             print(
                 f"{start}{'_'.join(knot_names[model.eval(n[1].knot)] for n in row)}{end}"
             )
+        print("\n\n")
 
-        # TODO: print as an input to braceletbook
-        # colors order: abbaabba
+        color_names = {white: "a", black: "b"}
         # knots: (f = forward forward, b = backward backward, fb = forward backward, bf = backward forward)
-        # f,f,fb,f
-        # f,f,f
-        # f,bf,f,f
-        # f,f,f
+        knot_names = {LR: "f", RL: "b", LL: "fb", RR: "bf"}
+        strings = "".join(
+            color_names[model.eval(n.color)] for n in grid.string_nodes.values()
+        )
+        print(f"{strings}\n")
+
+        for row in grid.knot_rows():
+            first_col = row[0][0][1]
+            last_col = row[-1][0][1]
+            start = ""
+            end = ""
+            print(
+                f"{start}{','.join(knot_names[model.eval(n[1].knot)] for n in row)}{end}"
+            )
 
     else:
         print("The problem is unsatisfiable")

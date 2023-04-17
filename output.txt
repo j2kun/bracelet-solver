@@ -1,21 +1,22 @@
-(name SERPINSKI)
+-- Braceletbook.com input
 
-(strings 32 PeachPuff PaleVioletRed PaleVioletRed PeachPuff PaleVioletRed PaleVioletRed PeachPuff PaleVioletRed PeachPuff PeachPuff PeachPuff PaleVioletRed PaleVioletRed PeachPuff PeachPuff PaleVioletRed PaleVioletRed PaleVioletRed PaleVioletRed PeachPuff PaleVioletRed PeachPuff PaleVioletRed PeachPuff PaleVioletRed PaleVioletRed PeachPuff PaleVioletRed PaleVioletRed PeachPuff PaleVioletRed PeachPuff)
+bbaababababbaabaabaabbabababaabb
 
-A_A_A_C_A_C_A_D_A_A_A_A_A_C_A_A
-_A_A_A_C_A_A_A_A_A_A_C_A_A_A_C_
-D_B_D_A_A_A_A_A_A_C_A_C_A_C_B_C
-_A_D_D_C_A_C_A_B_A_D_A_C_A_C_A_
-A_A_C_A_A_A_B_C_A_A_C_A_A_D_C_D
-_C_A_B_C_A_B_A_A_D_A_A_A_C_C_A_
-A_A_C_A_A_B_B_A_A_B_A_A_C_C_A_C
-_A_A_A_A_B_A_B_A_B_A_A_C_A_A_C_
-D_C_C_C_B_B_B_B_B_B_B_C_A_C_C_D
-_A_A_A_D_A_A_A_A_A_A_A_B_C_C_C_
-D_D_C_C_A_A_A_A_A_A_C_B_B_A_A_C
-_A_A_A_C_A_C_C_C_C_A_A_C_D_A_A_
-B_C_B_C_D_A_B_B_B_B_B_C_C_A_A_D
-_A_D_C_C_B_A_D_B_B_A_C_C_C_A_A_
-A_A_A_D_D_C_A_A_B_A_A_B_B_A_A_D
-_A_B_D_C_D_C_A_A_A_B_A_B_A_D_C_
-A_A_A_A_A_A_A_A_B_A_A_A_A_A_B_D
+f,f,bf,fb,bf,f,f,b,f,f,f,f,bf,fb,f,f
+f,fb,fb,fb,bf,b,f,f,bf,f,f,f,b,b,b
+fb,fb,bf,b,f,b,f,b,f,b,f,f,f,bf,f,bf
+bf,fb,f,fb,b,bf,f,f,f,fb,f,f,fb,f,fb
+fb,bf,fb,fb,f,f,b,f,bf,f,fb,f,bf,f,fb,bf
+f,f,f,fb,f,f,f,bf,bf,b,f,b,f,bf,bf
+f,bf,f,b,fb,bf,f,f,f,b,fb,f,b,f,b,bf
+b,b,fb,f,fb,bf,f,fb,bf,fb,bf,fb,fb,fb,f
+fb,fb,b,f,bf,bf,bf,f,f,f,f,f,f,bf,fb,bf
+fb,bf,fb,fb,bf,bf,b,b,b,b,b,f,f,f,f
+fb,bf,b,b,b,f,f,bf,bf,bf,b,fb,f,f,f,bf
+fb,fb,bf,fb,bf,f,f,f,fb,f,f,fb,f,b,f
+fb,f,f,f,f,f,f,fb,f,bf,b,fb,f,f,f,bf
+f,fb,bf,bf,b,f,f,bf,fb,b,f,f,b,f,bf
+bf,b,bf,fb,f,f,f,f,bf,b,bf,f,f,fb,f,fb
+bf,fb,fb,bf,b,bf,f,f,b,bf,f,f,b,f,fb
+fb,fb,b,b,b,b,b,fb,bf,bf,bf,f,bf,bf,bf,bf
+f,fb,fb,fb,fb,f,fb,f,bf,b,bf,bf,bf,bf,b
